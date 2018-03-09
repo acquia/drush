@@ -82,6 +82,7 @@ matrix:
         api_key:
           secure: XSZPUiLIA5WBa1Uk/l8gBXGQKKQliT5tOXRxcAeR86c6b4qtjeYjtlm2rQrCHc2Ha4GYLziyVOQPhwqLb78c4Q3qua45FVRZMKZ0AcP7khT0fefHcyCsNFspNZcs3BR/XW/vw5AdtS7SMA4idy8/ZQkt7ofr9tnXuMGlHSqJ25A=
         file: acquiadrush*.deb
+        file_glob: true
         on:
           repo: acquia/drush
           tags: true
