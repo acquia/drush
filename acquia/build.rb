@@ -22,8 +22,6 @@ end
 cmd = 'fpm'
 # dir in, deb out
 cmd << ' -s dir -t deb'
-# change dir so files are not nested in 'drush-x.x.x' dir.
-# cmd << " -C #{file}"
 file = '.'
 
 cmd << ' --architecture all'
