@@ -22,7 +22,7 @@ end
 cmd = 'fpm'
 # dir in, deb out
 cmd << ' -s dir -t deb'
-file = '.'
+file = '..'
 
 cmd << ' --architecture all'
 cmd << " --name #{name}#{major_ver}"
@@ -31,5 +31,6 @@ cmd << " --vendor 'Acquia, Inc.'"
 cmd << ' --license GPL-2.0+'
 cmd << ' --url https://github.com/acquia/fields'
 cmd << " --prefix /usr/local/drush#{major_ver}"
+cmd << ' --exclude acquia/*'
 cmd << " #{file}"
 shell(cmd)
