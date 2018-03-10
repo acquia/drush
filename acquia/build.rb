@@ -12,7 +12,7 @@ name = 'acquiadrush'
 
 # TODO Get all this from the current Git tag instead.
 major_ver = '9'
-version = '9.1.0-acquia1'
+version = '9.2.1-acquia1'
 
 file = version
 Dir.chdir('..') do
