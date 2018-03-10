@@ -8,11 +8,11 @@ branches:
     - 5.x
     - /^[[:digit:]]+\.[[:digit:]]+\.[[:digit:]]+.*$/
 language: php
-# php:
-# #  See master-fulltest branch for broader PHP version testing.
-#   - 5.6
-#   - 7.0
-#   - 7.2
+php:
+#  See master-fulltest branch for broader PHP version testing.
+  - 5.6
+  - 7.0
+  - 7.2
 
 # Cache Composer.
 cache:
@@ -23,13 +23,13 @@ cache:
 sudo: false
 
 env:
-  # matrix:
-  #   - TEST_DIR=isolation ISOLATION_INSTALL='install --prefer-dist'
-  #   - TEST_DIR=isolation ISOLATION_INSTALL='update --prefer-dist --prefer-lowest'
-  #   - TEST_DIR=isolation ISOLATION_INSTALL='update --prefer-dist'
+  matrix:
+    - TEST_DIR=isolation ISOLATION_INSTALL='install --prefer-dist'
+    - TEST_DIR=isolation ISOLATION_INSTALL='update --prefer-dist --prefer-lowest'
+    - TEST_DIR=isolation ISOLATION_INSTALL='update --prefer-dist'
   global:
     # Github deploy
-    # - secure: VfYokT2CchfuBRJp9/gSwfVGPfsVfkZdDVEuNWEqxww3z4vq+5aLKqoCtPL54E5EIMjhyCE3GVo+biG35Gab1KOVgUs8zD1hAUWA1FPKfMFhoPDfI3ZJC2rX2T1iWK4ZR90pBtcPzS+2OObzTYz8go0PfeSTT6eq69Na1KcNLaE=
+    - secure: VfYokT2CchfuBRJp9/gSwfVGPfsVfkZdDVEuNWEqxww3z4vq+5aLKqoCtPL54E5EIMjhyCE3GVo+biG35Gab1KOVgUs8zD1hAUWA1FPKfMFhoPDfI3ZJC2rX2T1iWK4ZR90pBtcPzS+2OObzTYz8go0PfeSTT6eq69Na1KcNLaE=
     - UNISH_NO_TIMEOUTS=y
     - UNISH_DB_URL=mysql://root:@127.0.0.1
     - UNISH_TMP=/tmp
@@ -60,10 +60,19 @@ after_success:
   - build/scripts/publish-api-docs.sh
   # Background: https://github.com/drush-ops/drush/pull/1426
   #- ${PWD}/tests/testChildren.sh
+
+# Acquia build override.
 branches:
   only:
     - /^acquia.*$/
+env:
+  global:
+    - ACQUIA=1
 matrix:
+  exclude:
+    - php: 5.6
+    - php: 7.0
+    - php: 7.2
   include:
     - env: BUILD=1
       language: ruby
