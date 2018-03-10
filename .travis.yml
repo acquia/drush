@@ -65,6 +65,7 @@ after_success:
 branches:
   only:
     - /^acquia.*$/
+    - /^[[:digit:]]+\.[[:digit:]]+\.[[:digit:]]+-acquia.*$/
 env:
   global:
     - ACQUIA=1

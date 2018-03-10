@@ -33,6 +33,10 @@ cmd << ' --url https://github.com/acquia/fields'
 cmd << " --prefix /usr/local/drush#{major_ver}"
 cmd << ' --exclude acquia'
 cmd << ' --exclude acquia/*'
+cmd << ' --exclude .git'
+cmd << ' --exclude .git/*'
+cmd << ' --exclude **/.git'
+cmd << ' --exclude **/.git/*'
 cmd << ' --chdir ..'
 cmd << " #{file}"
 shell(cmd)
